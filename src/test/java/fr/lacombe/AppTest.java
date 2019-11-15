@@ -12,7 +12,7 @@ import org.junit.Test;
 public class AppTest 
 {
     @Test
-    public void a_cell_should_be_alive()
+    public void isAlive_is_true_if_cell_is_alive()
     {
         Cell cell = new Cell();
 
@@ -21,13 +21,5 @@ public class AppTest
         Assertions.assertThat(result).isTrue();
     }
 
-    @Test
-    public void a_cell_should_be_dead()
-    {
-        Cell cell = new Cell();
 
-        boolean result = cell.isDead();
-
-        Assertions.assertThat(result).isTrue();
-    }
 }
