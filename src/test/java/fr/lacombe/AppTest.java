@@ -48,4 +48,19 @@ public class AppTest
         Assertions.assertThat(result).isFalse();
     }
 
+    @Test
+    public void next_generation_kill_cell_if_two_living_neighbors()
+    {
+        // Given
+        boolean alive = true;
+        Cell cell = new Cell(alive, 2);
+
+        // When
+        cell.nextGeneration();
+
+        // Then
+        boolean result = cell.isAlive();
+        Assertions.assertThat(result).isTrue();
+    }
+
 }
