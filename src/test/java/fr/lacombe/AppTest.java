@@ -12,9 +12,10 @@ import org.junit.Test;
 public class AppTest 
 {
     @Test
-    public void isAlive_is_true_if_cell_is_alive()
+    public void create_a_living_cell()
     {
-        Cell cell = new Cell();
+        boolean alive = true;
+        Cell cell = new Cell(alive);
 
         boolean result = cell.isAlive();
 
