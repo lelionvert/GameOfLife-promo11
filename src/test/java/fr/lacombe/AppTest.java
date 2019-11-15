@@ -11,15 +11,22 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
     @Test
     public void a_cell_should_be_alive()
     {
         Cell cell = new Cell();
 
         boolean result = cell.isAlive();
+
+        Assertions.assertThat(result).isTrue();
+    }
+
+    @Test
+    public void a_cell_should_be_dead()
+    {
+        Cell cell = new Cell();
+
+        boolean result = cell.isDead();
 
         Assertions.assertThat(result).isTrue();
     }
