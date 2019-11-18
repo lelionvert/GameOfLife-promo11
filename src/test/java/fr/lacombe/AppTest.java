@@ -12,10 +12,10 @@ import org.junit.Test;
 public class AppTest 
 {
     @Test
+
     public void isAlive_is_true_if_a_cell_is_alive()
     {
-        boolean alive = true;
-        Cell cell = new Cell(alive);
+        Cell cell = new Cell(true);
 
         boolean result = cell.isAlive();
 
@@ -25,8 +25,7 @@ public class AppTest
     @Test
     public void isAlive_is_false_if_a_cell_is_dead()
     {
-        boolean dead = false;
-        Cell cell = new Cell(dead);
+        Cell cell = new Cell(false);
 
         boolean result = cell.isAlive();
 
@@ -37,8 +36,7 @@ public class AppTest
     public void next_generation_kill_cell_if_no_neighbors()
     {
         // Given
-        boolean alive = true;
-        Cell cell = new Cell(alive);
+        Cell cell = new Cell(true);
 
         // When
         cell.nextGeneration();
@@ -52,8 +50,7 @@ public class AppTest
     public void next_generation_kill_cell_if_two_living_neighbors()
     {
         // Given
-        boolean alive = true;
-        Cell cell = new Cell(alive, 2);
+        Cell cell = new Cell(true, 2);
 
         // When
         cell.nextGeneration();
