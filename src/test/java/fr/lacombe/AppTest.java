@@ -28,13 +28,32 @@ public class AppTest {
         Assertions.assertThat(result).isFalse();
     }
 
-
     @ParameterizedTest
     @CsvSource(value = {
             "true, 0, false",
             "true, 1, false"
     })
     public void next_generation_dies_because_of_underpopulation(boolean alive, int nbNeighbours, boolean expected) {
+        // Given
+        Cell cell = new Cell(alive, nbNeighbours);
+
+        // When
+        cell.nextGeneration();
+
+        // Then
+        boolean result = cell.isAlive();
+        Assertions.assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "true, 4, false",
+            "true, 5, false",
+            "true, 6, false",
+            "true, 7, false",
+            "true, 8, false",
+    })
+    public void next_generation_dies_because_of_overpopulation(boolean alive, int nbNeighbours, boolean expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -74,15 +93,9 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            //underpopulation
-            "true, 0, false",
-            "true, 1, false",
             //viable
             "true, 2, true",
             "true, 3, true",
-            //overpopulation
-            "true, 4, false",
-            "true, 5, false",
             //still dead
             "false, 2, false"
             //birth of dead cell
