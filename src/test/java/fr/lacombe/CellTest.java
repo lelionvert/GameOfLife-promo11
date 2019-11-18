@@ -11,29 +11,29 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class CellTest {
     @Test
 
-    public void isAlive_is_true_if_a_cell_is_alive() {
-        Cell cell = new Cell(true);
+    public void isAlive_is_alive_if_a_cell_is_alive() {
+        Cell cell = new Cell(State.ALIVE);
 
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
 
-        Assertions.assertThat(result).isTrue();
+        Assertions.assertThat(result).isEqualTo(State.ALIVE);
     }
 
     @Test
-    public void isAlive_is_false_if_a_cell_is_dead() {
-        Cell cell = new Cell(false);
+    public void isAlive_is_dead_if_a_cell_is_dead() {
+        Cell cell = new Cell(State.DEAD);
 
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
 
-        Assertions.assertThat(result).isFalse();
+        Assertions.assertThat(result).isEqualTo(State.DEAD);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "true, 0, false",
-            "true, 1, false"
+            "ALIVE, 0, DEAD",
+            "ALIVE, 1, DEAD"
     })
-    public void next_generation_dies_because_of_underpopulation(boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_dies_because_of_underpopulation(State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -41,19 +41,19 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "true, 4, false",
-            "true, 5, false",
-            "true, 6, false",
-            "true, 7, false",
-            "true, 8, false",
+            "ALIVE, 4, DEAD",
+            "ALIVE, 5, DEAD",
+            "ALIVE, 6, DEAD",
+            "ALIVE, 7, DEAD",
+            "ALIVE, 8, DEAD",
     })
-    public void next_generation_dies_because_of_overpopulation(boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_dies_because_of_overpopulation(State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -61,17 +61,17 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "true, 2, true",
-            "true, 3, true"
+            "ALIVE, 2, ALIVE",
+            "ALIVE, 3, ALIVE"
     })
     public void next_generation_maintains_cell_alive_if_two_or_three_living_neighbors
-            (boolean alive, int nbNeighbours, boolean expected) {
+            (State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -79,18 +79,18 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "false, 0, false",
-            "false, 1, false",
-            "false, 2, false"
+            "DEAD, 0, DEAD",
+            "DEAD, 1, DEAD",
+            "DEAD, 2, DEAD"
     })
     public void next_generation_maintains_died_cell_because_of_underpopulation
-            (boolean alive, int nbNeighbours, boolean expected) {
+            (State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -98,33 +98,32 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @Test
     public void next_generation_give_birth_to_cell_if_three_neighbours() {
         // Given
-        Cell cell = new Cell(false, 3);
+        Cell cell = new Cell(State.DEAD, 3);
 
         // When
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
-        Assertions.assertThat(result).isEqualTo(true);
+        State result = cell.isAlive();
+        Assertions.assertThat(result).isEqualTo(State.ALIVE);
     }
 
     @ParameterizedTest
     @CsvSource(value = {
-            "false, 4, false",
-            "false, 5, false",
-            "false, 6, false",
-            "false, 7, false",
-            "false, 8, false"
+            "DEAD, 4, DEAD",
+            "DEAD, 5, DEAD",
+            "DEAD, 6, DEAD",
+            "DEAD, 7, DEAD",
+            "DEAD, 8, DEAD"
     })
-    public void next_generation_maintains_died_cell_because_of_overpopulation
-            (boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_maintains_died_cell_because_of_overpopulation(State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -132,7 +131,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        boolean result = cell.isAlive();
+        State result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 

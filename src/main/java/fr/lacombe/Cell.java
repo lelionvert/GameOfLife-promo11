@@ -1,20 +1,20 @@
 package fr.lacombe;
 
 class Cell {
-    private boolean alive;
+    private State alive;
     private int nbNeighbor;
 
-    Cell(boolean alive) {
+    Cell(State alive) {
         this.alive = alive;
         this.nbNeighbor = 0;
     }
 
-    Cell(boolean alive, int nbNeighbor) {
+    Cell(State alive, int nbNeighbor) {
         this.alive = alive;
         this.nbNeighbor = nbNeighbor;
     }
 
-    boolean isAlive() {
+    State isAlive() {
         return alive;
     }
 
@@ -25,14 +25,14 @@ class Cell {
     }
 
     private void aliveNeighborsCondition() {
-        if(nbNeighbor == 3) alive = true;
+        if(nbNeighbor == 3) alive = State.ALIVE;
     }
 
     private void overpopulation() {
-        if(nbNeighbor > 3) alive = false;
+        if(nbNeighbor > 3) alive = State.DEAD;
     }
 
     private void underpopulation() {
-        if(nbNeighbor < 2) alive = false;
+        if(nbNeighbor < 2) alive = State.DEAD;
     }
 }
