@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class CellTest {
     @Test
 
     public void isAlive_is_true_if_a_cell_is_alive() {
@@ -114,7 +114,6 @@ public class AppTest {
         boolean result = cell.isAlive();
         Assertions.assertThat(result).isEqualTo(true);
     }
-
 
     @ParameterizedTest
     @CsvSource(value = {

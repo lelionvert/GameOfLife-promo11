@@ -19,12 +19,20 @@ class Cell {
     }
 
     void nextGeneration() {
-        if(nbNeighbor == 3 && !alive){
-            alive = true;
-            return;
-        };
-        if(nbNeighbor == 3) return;
-        if(nbNeighbor == 2) return;
-        alive = false;
+        underpopulation();
+        aliveNeighborsCondition();
+        overpopulation();
+    }
+
+    private void aliveNeighborsCondition() {
+        if(nbNeighbor == 3) alive = true;
+    }
+
+    private void overpopulation() {
+        if(nbNeighbor > 3) alive = false;
+    }
+
+    private void underpopulation() {
+        if(nbNeighbor < 2) alive = false;
     }
 }
