@@ -1,24 +1,25 @@
 package fr.lacombe;
 
-public class Cell {
+class Cell {
     private boolean alive;
     private int nbNeighbor;
 
-    public Cell(boolean alive) {
+    Cell(boolean alive) {
         this.alive = alive;
         this.nbNeighbor = 0;
     }
 
-    public Cell(boolean alive, int nbNeighbor) {
+    Cell(boolean alive, int nbNeighbor) {
         this.alive = alive;
         this.nbNeighbor = nbNeighbor;
     }
 
-    public boolean isAlive() {
+    boolean isAlive() {
         return alive;
     }
 
-    public void nextGeneration() {
+    void nextGeneration() {
+        if(nbNeighbor == 3) return;
         if(nbNeighbor == 2) return;
         alive = false;
     }
