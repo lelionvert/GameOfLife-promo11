@@ -102,6 +102,20 @@ public class AppTest {
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
+    @Test
+    public void next_generation_give_birth_to_cell_if_three_neighbours() {
+        // Given
+        Cell cell = new Cell(false, 3);
+
+        // When
+        cell.nextGeneration();
+
+        // Then
+        boolean result = cell.isAlive();
+        Assertions.assertThat(result).isEqualTo(true);
+    }
+
+
     @ParameterizedTest
     @CsvSource(value = {
             "false, 4, false",

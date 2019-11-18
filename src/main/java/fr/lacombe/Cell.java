@@ -19,6 +19,10 @@ class Cell {
     }
 
     void nextGeneration() {
+        if(nbNeighbor == 3 && !alive){
+            alive = true;
+            return;
+        };
         if(nbNeighbor == 3) return;
         if(nbNeighbor == 2) return;
         alive = false;
