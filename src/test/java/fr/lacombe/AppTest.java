@@ -67,12 +67,11 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            //viable
             "true, 2, true",
             "true, 3, true"
     })
-    public void next_generation_maintains_cell_alive_if_two_or_three_living_neighbors(
-            boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_maintains_cell_alive_if_two_or_three_living_neighbors
+            (boolean alive, int nbNeighbours, boolean expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -86,13 +85,12 @@ public class AppTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            //still dead
             "false, 0, false",
             "false, 1, false",
             "false, 2, false"
     })
-    public void next_generation_maintains_died_cell_because_of_underpopulation(
-            boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_maintains_died_cell_because_of_underpopulation
+            (boolean alive, int nbNeighbours, boolean expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
@@ -112,8 +110,8 @@ public class AppTest {
             "false, 7, false",
             "false, 8, false"
     })
-    public void next_generation_maintains_died_cell_because_of_overpopulation(
-            boolean alive, int nbNeighbours, boolean expected) {
+    public void next_generation_maintains_died_cell_because_of_overpopulation
+            (boolean alive, int nbNeighbours, boolean expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
 
