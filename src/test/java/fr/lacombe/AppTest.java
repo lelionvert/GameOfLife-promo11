@@ -65,43 +65,13 @@ public class AppTest {
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
-    @Test
-    public void next_generation_kill_cell_if_two_living_neighbors() {
-        // Given
-        Cell cell = new Cell(true, 2);
-
-        // When
-        cell.nextGeneration();
-
-        // Then
-        boolean result = cell.isAlive();
-        Assertions.assertThat(result).isTrue();
-    }
-
-    @Test
-    public void next_generation_kill_cell_if_three_living_neighbors() {
-        // Given
-        Cell cell = new Cell(true, 3);
-
-        // When
-        cell.nextGeneration();
-
-        // Then
-        boolean result = cell.isAlive();
-        Assertions.assertThat(result).isTrue();
-    }
-
     @ParameterizedTest
     @CsvSource(value = {
             //viable
             "true, 2, true",
-            "true, 3, true",
-            //still dead
-            "false, 2, false"
-            //birth of dead cell
-            //"false, 3, true"
+            "true, 3, true"
     })
-    public void toto(
+    public void next_generation_maintains_cell_alive_if_two_or_three_living_neighbors(
             boolean alive, int nbNeighbours, boolean expected) {
         // Given
         Cell cell = new Cell(alive, nbNeighbours);
@@ -114,5 +84,45 @@ public class AppTest {
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            //still dead
+            "false, 0, false",
+            "false, 1, false",
+            "false, 2, false"
+    })
+    public void next_generation_maintains_died_cell_because_of_underpopulation(
+            boolean alive, int nbNeighbours, boolean expected) {
+        // Given
+        Cell cell = new Cell(alive, nbNeighbours);
+
+        // When
+        cell.nextGeneration();
+
+        // Then
+        boolean result = cell.isAlive();
+        Assertions.assertThat(result).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "false, 4, false",
+            "false, 5, false",
+            "false, 6, false",
+            "false, 7, false",
+            "false, 8, false"
+    })
+    public void next_generation_maintains_died_cell_because_of_overpopulation(
+            boolean alive, int nbNeighbours, boolean expected) {
+        // Given
+        Cell cell = new Cell(alive, nbNeighbours);
+
+        // When
+        cell.nextGeneration();
+
+        // Then
+        boolean result = cell.isAlive();
+        Assertions.assertThat(result).isEqualTo(expected);
+    }
 
 }
