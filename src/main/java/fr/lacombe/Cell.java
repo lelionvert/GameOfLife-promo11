@@ -2,16 +2,16 @@ package fr.lacombe;
 
 class Cell {
     private State alive;
-    private int nbNeighbor;
+    private Neighbors neighbors;
 
     Cell(State alive) {
         this.alive = alive;
-        this.nbNeighbor = 0;
+        this.neighbors = new Neighbors(0);
     }
 
-    Cell(State alive, int nbNeighbor) {
+    Cell(State alive, int nbNeighbors) {
         this.alive = alive;
-        this.nbNeighbor = nbNeighbor;
+        this.neighbors = new Neighbors(nbNeighbors);
     }
 
     State isAlive() {
@@ -25,14 +25,14 @@ class Cell {
     }
 
     private void aliveNeighborsCondition() {
-        if(nbNeighbor == 3) alive = State.ALIVE;
+        if(neighbors.living() == 3) alive = State.ALIVE;
     }
 
     private void overpopulation() {
-        if(nbNeighbor > 3) alive = State.DEAD;
+        if(neighbors.living() > 3) alive = State.DEAD;
     }
 
     private void underpopulation() {
-        if(nbNeighbor < 2) alive = State.DEAD;
+        if(neighbors.living() < 2) alive = State.DEAD;
     }
 }
