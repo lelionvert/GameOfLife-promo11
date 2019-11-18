@@ -1,15 +1,25 @@
 # GameOfLife-promo11
 
-Les règles du Jeu
----
+Cornway's Game of Life rules
+--
 
-L' univers du jeu de la vie est un quadrillage (théoriquement infini) à mailles carrées. Les cases sont occupées (ou non) par des cellules en nombre fini. Le voisinage d'une cellule comporte ses huit cases adjacentes : par un côté, mais aussi par un coin. Ce sont les "x" sur le schéma suivant :
+Cornway's Game of Life is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.
 
+The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead.
 
-1) Une cellule n'a que 2 états possibles : vivante (sa case est occupée) ou morte (case vide).
+Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent.
 
-2) Les cellules naissent, survivent ou meurent (disparaissent) d'une génération à l'autre selon les règles suivantes :
-survie si 2 ou 3 voisines
-naissance si 3 voisines
+At each step in time, the following transitions occur:
 
-W: http://math.pc.vh.free.fr/divers/life/regles.htm
+1) Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
+2) Any live cell with more than three live neighbours dies, as if by overcrowding.
+3) Any live cell with two or three live neighbours lives on to the next generation.
+4) Any dead cell with exactly three live neighbours becomes a live cell.
+
+About this kata
+--
+
+This Kata is about calculating the next generation of Conway's game of life, given any starting position.
+
+* Use TDD
+* Use Java 8 new features (Lambda expressions, Stream API...)
