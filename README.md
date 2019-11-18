@@ -23,3 +23,6 @@ This Kata is about calculating the next generation of Conway's game of life, giv
 
 * Use TDD
 * Use Java 8 new features (Lambda expressions, Stream API...)
+
+
+Web : https://github.com/alvaromr/game-of-life-kata
