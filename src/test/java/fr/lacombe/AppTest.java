@@ -29,17 +29,21 @@ public class AppTest {
     }
 
 
-    @Test
-    public void next_generation_kill_cell_if_no_neighbors() {
+    @ParameterizedTest
+    @CsvSource(value = {
+            "true, 0, false",
+            "true, 1, false"
+    })
+    public void next_generation_dies_because_of_underpopulation(boolean alive, int nbNeighbours, boolean expected) {
         // Given
-        Cell cell = new Cell(true);
+        Cell cell = new Cell(alive, nbNeighbours);
 
         // When
         cell.nextGeneration();
 
         // Then
         boolean result = cell.isAlive();
-        Assertions.assertThat(result).isFalse();
+        Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @Test
