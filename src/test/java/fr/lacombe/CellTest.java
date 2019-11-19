@@ -49,7 +49,7 @@ public class CellTest {
     private Cell createLivingCellNeighbors(State alive, int nbNeighbours) {
 
         Cell cell = new Cell(alive, nbNeighbours);
-        for(int i = 0; i < nbNeighbours; i++) {
+        for(int i = 0; i <= nbNeighbours; i++) {
             cell.addNeighbor(new Cell(State.ALIVE));
         }
         return cell;
