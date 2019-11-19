@@ -153,7 +153,7 @@ public class CellTest {
         Cell cellRight = new Cell(State.ALIVE);
         cellLeft.addNeighbor(cellRight);
 
-        boolean result = cellLeft.isNeighborOf(cellRight);
+        boolean result = cellLeft.hasNeighborOf(cellRight);
 
         Assertions.assertThat(result).isEqualTo(true);
     }
@@ -164,7 +164,7 @@ public class CellTest {
         Cell cellLeft = new Cell(State.ALIVE);
         Cell cellRight = new Cell(State.ALIVE);
 
-        boolean result = cellLeft.isNeighborOf(cellRight);
+        boolean result = cellLeft.hasNeighborOf(cellRight);
 
         Assertions.assertThat(result).isEqualTo(false);
     }

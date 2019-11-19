@@ -9,7 +9,7 @@ public class NeighborsTest {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
         cell1.addNeighbor(cell2);
-        boolean result = cell1.isNeighborOf(cell2);
+        boolean result = cell1.hasNeighborOf(cell2);
 
         Assertions.assertThat(result).isTrue();
 
@@ -20,7 +20,7 @@ public class NeighborsTest {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
         cell1.addNeighbor(cell2);
-        boolean result = cell2.isNeighborOf(cell1);
+        boolean result = cell2.hasNeighborOf(cell1);
 
         Assertions.assertThat(result).isTrue();
 

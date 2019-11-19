@@ -54,7 +54,7 @@ class Cell {
         return sb.toString();
     }
 
-    public boolean isNeighborOf(Cell cellRight) {
+    public boolean hasNeighborOf(Cell cellRight) {
         return neighbors.contains(cellRight);
     }
 
