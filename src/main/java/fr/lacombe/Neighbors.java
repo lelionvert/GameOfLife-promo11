@@ -12,6 +12,7 @@ public class Neighbors {
     int living() {
         int cpt = 0;
         for (Cell cell: cells) {
+            if(cell.isAlive() == State.DEAD) return 0;
             cpt++;
         }
         return cpt;
