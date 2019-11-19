@@ -20,12 +20,7 @@ public class Neighbors {
     }
 
     boolean contains(Cell cellRight) {
-        for (Cell cell : cells) {
-            if (cellRight.equals(cell)) {
-                return true;
-            }
-        }
-        return false;
+        return cells.stream().anyMatch(cellRight::equals);
     }
 
     @Override
