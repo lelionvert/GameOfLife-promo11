@@ -10,11 +10,7 @@ public class Neighbors {
     }
 
     int living() {
-        int cpt = 0;
-        for (Cell cell: cells) {
-            if(cell.getState() == State.ALIVE) cpt++;
-        }
-        return cpt;
+        return (int) cells.stream().filter(cell -> cell.getState() == State.ALIVE).count();
     }
 
     void add(Cell cellRight) {
