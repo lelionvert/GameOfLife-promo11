@@ -12,7 +12,6 @@ public class NeighborsTest {
         boolean result = cell1.hasNeighborOf(cell2);
 
         Assertions.assertThat(result).isTrue();
-
     }
 
     @Test
@@ -23,6 +22,5 @@ public class NeighborsTest {
         boolean result = cell2.hasNeighborOf(cell1);
 
         Assertions.assertThat(result).isTrue();
-
     }
 }
