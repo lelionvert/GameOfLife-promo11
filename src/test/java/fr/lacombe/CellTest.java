@@ -1,7 +1,6 @@
 package fr.lacombe;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -49,7 +48,7 @@ public class CellTest {
     private Cell createLivingCellNeighbors(State alive, int nbNeighbours) {
 
         Cell cell = new Cell(alive);
-        for(int i = 0; i < nbNeighbours; i++) {
+        for (int i = 0; i < nbNeighbours; i++) {
             cell.addNeighbor(new Cell(State.ALIVE));
         }
         return cell;
@@ -147,25 +146,22 @@ public class CellTest {
     }
 
     @Test
-    @Ignore("WIP")
-    public void neighborhood_between_two_cells() {
-        Cell cellLeft = new Cell(State.ALIVE);
-        Cell cellRight = new Cell(State.ALIVE);
-        cellLeft.addNeighbor(cellRight);
+    public void add_neighbor_cell2_to_cell1_should_make_cell2_neighbor_of_cell1() {
+        Cell cell1 = new Cell(State.ALIVE);
+        Cell cell2 = new Cell(State.ALIVE);
+        cell1.addNeighbor(cell2);
+        boolean result = cell1.hasNeighborOf(cell2);
 
-        boolean result = cellLeft.hasNeighborOf(cellRight);
-
-        Assertions.assertThat(result).isEqualTo(true);
+        Assertions.assertThat(result).isTrue();
     }
 
     @Test
-    @Ignore("WIP")
-    public void not_neighborhood_between_two_cells() {
-        Cell cellLeft = new Cell(State.ALIVE);
-        Cell cellRight = new Cell(State.ALIVE);
+    public void add_neighbor_cell2_to_cell1_should_make_cell1_neighbor_of_cell2() {
+        Cell cell1 = new Cell(State.ALIVE);
+        Cell cell2 = new Cell(State.ALIVE);
+        cell1.addNeighbor(cell2);
+        boolean result = cell2.hasNeighborOf(cell1);
 
-        boolean result = cellLeft.hasNeighborOf(cellRight);
-
-        Assertions.assertThat(result).isEqualTo(false);
+        Assertions.assertThat(result).isTrue();
     }
 }
