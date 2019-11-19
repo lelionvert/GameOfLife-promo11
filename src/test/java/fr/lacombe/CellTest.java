@@ -136,6 +136,12 @@ public class CellTest {
     }
 
     @Test
-    void neighborhood_between_two_cells() {
+    public void neighborhood_between_two_cells() {
+        Cell cellLeft = new Cell(State.ALIVE);
+        Cell cellRight = new Cell(State.ALIVE);
 
+        boolean result = cellLeft.isNeighborOf(cellRight);
+
+        Assertions.assertThat(result).isEqualTo(true);
     }
+}

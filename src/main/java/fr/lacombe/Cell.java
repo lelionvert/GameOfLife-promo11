@@ -58,4 +58,8 @@ class Cell {
         sb.append('}');
         return sb.toString();
     }
+
+    public boolean isNeighborOf(Cell cellRight) {
+        return true;
+    }
 }
