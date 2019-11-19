@@ -10,11 +10,6 @@ class Cell {
         this.neighbors = new Neighbors(0);
     }
 
-    Cell(State alive, int nbNeighbors) {
-        this.actualStateLife = alive;
-        this.neighbors = new Neighbors(nbNeighbors);
-    }
-
     State isAlive() {
         return actualStateLife;
     }

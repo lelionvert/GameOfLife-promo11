@@ -48,8 +48,8 @@ public class CellTest {
 
     private Cell createLivingCellNeighbors(State alive, int nbNeighbours) {
 
-        Cell cell = new Cell(alive, nbNeighbours);
-        for(int i = 0; i <= nbNeighbours; i++) {
+        Cell cell = new Cell(alive);
+        for(int i = 0; i < nbNeighbours; i++) {
             cell.addNeighbor(new Cell(State.ALIVE));
         }
         return cell;
@@ -133,7 +133,8 @@ public class CellTest {
             "DEAD, 7, DEAD",
             "DEAD, 8, DEAD"
     })
-    public void next_generation_maintains_died_cell_because_of_overpopulation(State alive, int nbNeighbours, State expected) {
+    public void next_generation_maintains_died_cell_because_of_overpopulation
+            (State alive, int nbNeighbours, State expected) {
         // Given
         Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
 

@@ -13,7 +13,7 @@ public class Neighbors {
     }
 
     public int living() {
-        return aliveNeighbors;
+        return cells.size();
     }
 
     public void add(Cell cellRight) {
