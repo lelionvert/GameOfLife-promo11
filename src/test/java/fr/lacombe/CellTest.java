@@ -135,4 +135,7 @@ public class CellTest {
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
-}
+    @Test
+    void neighborhood_between_two_cells() {
+
+    }

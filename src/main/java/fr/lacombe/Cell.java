@@ -1,25 +1,25 @@
 package fr.lacombe;
 
 class Cell {
-    private State alive;
-    private State nextGenerationState;
+    private State actualStateLife;
+    private State nextStateLife;
     private Neighbors neighbors;
 
     Cell(State alive) {
-        this.alive = alive;
+        this.actualStateLife = alive;
         this.neighbors = new Neighbors(0);
     }
 
     Cell(State alive, int nbNeighbors) {
-        this.alive = alive;
+        this.actualStateLife = alive;
         this.neighbors = new Neighbors(nbNeighbors);
     }
 
     State isAlive() {
-        return alive;
+        return actualStateLife;
     }
     State willBeAlive() {
-        return nextGenerationState;
+        return nextStateLife;
     }
 
     void nextGeneration() {
@@ -30,30 +30,30 @@ class Cell {
 
     private void aliveNeighborsCondition() {
         if(neighbors.living() == 3) {
-            nextGenerationState = State.ALIVE;
+            nextStateLife = State.ALIVE;
         }
         if(neighbors.living() == 2) {
-            nextGenerationState = alive;
+            nextStateLife = actualStateLife;
         }
     }
 
     private void overpopulation() {
         if(neighbors.living() > 3) {
-            nextGenerationState = State.DEAD;
+            nextStateLife = State.DEAD;
         }
     }
 
     private void underpopulation() {
         if(neighbors.living() < 2) {
-            nextGenerationState = State.DEAD;
+            nextStateLife = State.DEAD;
         }
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cell{");
-        sb.append("alive=").append(alive);
-        sb.append(", nextGenerationState=").append(nextGenerationState);
+        sb.append("alive=").append(actualStateLife);
+        sb.append(", nextGenerationState=").append(nextStateLife);
         sb.append(", neighbors=").append(neighbors);
         sb.append('}');
         return sb.toString();
