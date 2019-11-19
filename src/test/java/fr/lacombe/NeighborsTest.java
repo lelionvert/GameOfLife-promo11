@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class NeighborsTest {
     @Test
-    void add_cell_to_neighborhood() {
+    void add_neighbor_cell2_to_cell1_should_make_cell2_neighbor_of_cell1() {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
         cell1.addNeighbor(cell2);
@@ -16,7 +16,7 @@ public class NeighborsTest {
     }
 
     @Test
-    void add_cell_to_neighborhood2() {
+    void add_neighbor_cell2_to_cell1_should_make_cell1_neighbor_of_cell2() {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
         cell1.addNeighbor(cell2);
