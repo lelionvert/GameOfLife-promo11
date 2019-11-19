@@ -44,6 +44,15 @@ class Cell {
         }
     }
 
+    boolean hasNeighborOf(Cell cell) {
+        return neighbors.contains(cell);
+    }
+
+    void addNeighbor(Cell cell) {
+        neighbors.add(cell);
+        cell.neighbors.add(this);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Cell{");
@@ -52,14 +61,5 @@ class Cell {
         sb.append(", neighbors=").append(neighbors);
         sb.append('}');
         return sb.toString();
-    }
-
-    public boolean hasNeighborOf(Cell cellRight) {
-        return neighbors.contains(cellRight);
-    }
-
-    public void addNeighbor(Cell cellRight) {
-        neighbors.add(cellRight);
-        cellRight.neighbors.add(this);
     }
 }
