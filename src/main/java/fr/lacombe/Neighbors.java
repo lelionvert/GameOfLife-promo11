@@ -6,22 +6,22 @@ public class Neighbors {
     private ArrayList<Cell> cells;
     private int MAX_NEIGHBORS = 8;
 
-    public Neighbors() {
+    Neighbors() {
         this.cells = new ArrayList<>();
     }
 
-    public int living() {
+    int living() {
         return cells.size();
     }
 
-    public void add(Cell cellRight) {
+    void add(Cell cellRight) {
         cells.add(cellRight);
     }
 
-    public boolean contains(Cell cellRight) {
+    boolean contains(Cell cellRight) {
         boolean equal = false;
-        for(int i = 0; i<cells.size(); i++) {
-            if(cellRight.equals(cells.get(i)))
+        for (Cell cell : cells) {
+            if (cellRight.equals(cell))
                 equal = true;
         }
         return equal;
