@@ -10,7 +10,9 @@ public class Neighbors {
     }
 
     int living() {
-        return (int) cells.stream().filter(cell -> cell.getState() == State.ALIVE).count();
+        return (int) cells.stream()
+                .filter(cell -> cell.getState() == State.ALIVE)
+                .count();
     }
 
     void add(Cell cellRight) {
@@ -18,12 +20,12 @@ public class Neighbors {
     }
 
     boolean contains(Cell cellRight) {
-        boolean equal = false;
         for (Cell cell : cells) {
-            if (cellRight.equals(cell))
-                equal = true;
+            if (cellRight.equals(cell)) {
+                return true;
+            }
         }
-        return equal;
+        return false;
     }
 
     @Override
