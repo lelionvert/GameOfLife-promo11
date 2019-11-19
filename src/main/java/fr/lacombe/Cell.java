@@ -13,9 +13,7 @@ class Cell {
     State isAlive() {
         return actualStateLife;
     }
-    State willBeAlive() {
-        return nextStateLife;
-    }
+    State willBeAlive() { return nextStateLife; }
 
     void nextGeneration() {
         underpopulation();
@@ -48,9 +46,13 @@ class Cell {
         return neighbors.contains(cell);
     }
 
-    void addNeighbor(Cell cell) {
+    void makeNeighbors(Cell cell) {
+        addNeighbor(cell);
+        cell.addNeighbor(this);
+    }
+
+    private void addNeighbor(Cell cell) {
         neighbors.add(cell);
-        cell.neighbors.add(this);
     }
 
     @Override

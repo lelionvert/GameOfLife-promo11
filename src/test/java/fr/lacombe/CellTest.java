@@ -49,7 +49,7 @@ public class CellTest {
 
         Cell cell = new Cell(alive);
         for (int i = 0; i < nbNeighbours; i++) {
-            cell.addNeighbor(new Cell(State.ALIVE));
+            cell.makeNeighbors(new Cell(State.ALIVE));
         }
         return cell;
     }
@@ -149,7 +149,7 @@ public class CellTest {
     public void add_neighbor_cell2_to_cell1_should_make_cell2_neighbor_of_cell1() {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
-        cell1.addNeighbor(cell2);
+        cell1.makeNeighbors(cell2);
         boolean result = cell1.hasNeighborOf(cell2);
 
         Assertions.assertThat(result).isTrue();
@@ -159,7 +159,7 @@ public class CellTest {
     public void add_neighbor_cell2_to_cell1_should_make_cell1_neighbor_of_cell2() {
         Cell cell1 = new Cell(State.ALIVE);
         Cell cell2 = new Cell(State.ALIVE);
-        cell1.addNeighbor(cell2);
+        cell1.makeNeighbors(cell2);
         boolean result = cell2.hasNeighborOf(cell1);
 
         Assertions.assertThat(result).isTrue();
