@@ -10,7 +10,11 @@ public class Neighbors {
     }
 
     int living() {
-        return cells.size();
+        int cpt = 0;
+        for (Cell cell: cells) {
+            cpt++;
+        }
+        return cpt;
     }
 
     void add(Cell cellRight) {
