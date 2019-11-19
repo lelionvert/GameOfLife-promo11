@@ -1,6 +1,7 @@
 package fr.lacombe;
 
 import org.assertj.core.api.Assertions;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -136,12 +137,25 @@ public class CellTest {
     }
 
     @Test
+    @Ignore("WIP")
     public void neighborhood_between_two_cells() {
+        Cell cellLeft = new Cell(State.ALIVE);
+        Cell cellRight = new Cell(State.ALIVE);
+        cellLeft.addNeighbor(cellRight);
+
+        boolean result = cellLeft.isNeighborOf(cellRight);
+
+        Assertions.assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    @Ignore("WIP")
+    public void not_neighborhood_between_two_cells() {
         Cell cellLeft = new Cell(State.ALIVE);
         Cell cellRight = new Cell(State.ALIVE);
 
         boolean result = cellLeft.isNeighborOf(cellRight);
 
-        Assertions.assertThat(result).isEqualTo(true);
+        Assertions.assertThat(result).isEqualTo(false);
     }
 }

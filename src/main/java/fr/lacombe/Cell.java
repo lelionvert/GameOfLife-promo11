@@ -60,6 +60,10 @@ class Cell {
     }
 
     public boolean isNeighborOf(Cell cellRight) {
-        return true;
+        return neighbors.contains(cellRight);
+    }
+
+    public void addNeighbor(Cell cellRight) {
+        neighbors.add(cellRight);
     }
 }

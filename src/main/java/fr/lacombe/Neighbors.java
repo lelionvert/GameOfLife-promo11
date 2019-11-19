@@ -29,4 +29,17 @@ public class Neighbors {
         sb.append('}');
         return sb.toString();
     }
+
+    public boolean contains(Cell cellRight) {
+        boolean equal = false;
+        for(int i = 0; i<aliveNeighbors; i++) {
+            if(cellRight.equals(cells.get(i)))
+                equal = true;
+        }
+        return equal;
+    }
+
+    public void add(Cell cellRight) {
+        cells.add(cellRight);
+    }
 }
