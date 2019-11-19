@@ -10,7 +10,7 @@ class Cell {
         this.neighbors = new Neighbors();
     }
 
-    State isAlive() {
+    State getState() {
         return actualStateLife;
     }
     State willBeAlive() { return nextStateLife; }

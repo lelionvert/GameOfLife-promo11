@@ -14,7 +14,7 @@ public class CellTest {
     public void isAlive_is_alive_if_a_cell_is_alive() {
         Cell cell = new Cell(State.ALIVE);
 
-        State result = cell.isAlive();
+        State result = cell.getState();
 
         Assertions.assertThat(result).isEqualTo(State.ALIVE);
     }
@@ -23,7 +23,7 @@ public class CellTest {
     public void isAlive_is_dead_if_a_cell_is_dead() {
         Cell cell = new Cell(State.DEAD);
 
-        State result = cell.isAlive();
+        State result = cell.getState();
 
         Assertions.assertThat(result).isEqualTo(State.DEAD);
     }
