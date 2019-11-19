@@ -60,5 +60,6 @@ class Cell {
 
     public void addNeighbor(Cell cellRight) {
         neighbors.add(cellRight);
+        cellRight.neighbors.add(this);
     }
 }
