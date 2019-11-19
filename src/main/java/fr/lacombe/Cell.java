@@ -7,7 +7,7 @@ class Cell {
 
     Cell(State alive) {
         this.actualStateLife = alive;
-        this.neighbors = new Neighbors(0);
+        this.neighbors = new Neighbors();
     }
 
     State isAlive() {

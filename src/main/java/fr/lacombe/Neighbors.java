@@ -3,12 +3,10 @@ package fr.lacombe;
 import java.util.ArrayList;
 
 public class Neighbors {
-    private int aliveNeighbors;
     private ArrayList<Cell> cells;
     private int MAX_NEIGHBORS = 8;
 
-    public Neighbors(int aliveNeighbors) {
-        this.aliveNeighbors = aliveNeighbors;
+    public Neighbors() {
         this.cells = new ArrayList<>();
     }
 
@@ -22,7 +20,7 @@ public class Neighbors {
 
     public boolean contains(Cell cellRight) {
         boolean equal = false;
-        for(int i = 0; i<aliveNeighbors; i++) {
+        for(int i = 0; i<cells.size(); i++) {
             if(cellRight.equals(cells.get(i)))
                 equal = true;
         }
@@ -32,8 +30,7 @@ public class Neighbors {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Neighbors{");
-        sb.append("aliveNeighbors=").append(aliveNeighbors);
-        sb.append(", cells=").append(cells);
+        sb.append("cells=").append(cells);
         sb.append(", MAX_NEIGHBORS=").append(MAX_NEIGHBORS);
         sb.append('}');
         return sb.toString();
