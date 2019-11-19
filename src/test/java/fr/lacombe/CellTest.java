@@ -41,7 +41,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -61,7 +61,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -79,7 +79,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -98,7 +98,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -111,7 +111,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(State.ALIVE);
     }
 
@@ -131,7 +131,7 @@ public class CellTest {
         cell.nextGeneration();
 
         // Then
-        State result = cell.isAlive();
+        State result = cell.willBeAlive();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 

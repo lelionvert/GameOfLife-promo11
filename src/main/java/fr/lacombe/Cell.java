@@ -2,6 +2,7 @@ package fr.lacombe;
 
 class Cell {
     private State alive;
+    private State nextGenerationState;
     private Neighbors neighbors;
 
     Cell(State alive) {
@@ -17,6 +18,9 @@ class Cell {
     State isAlive() {
         return alive;
     }
+    State willBeAlive() {
+        return nextGenerationState;
+    }
 
     void nextGeneration() {
         underpopulation();
@@ -25,14 +29,33 @@ class Cell {
     }
 
     private void aliveNeighborsCondition() {
-        if(neighbors.living() == 3) alive = State.ALIVE;
+        if(neighbors.living() == 3) {
+            nextGenerationState = State.ALIVE;
+        }
+        if(neighbors.living() == 2) {
+            nextGenerationState = alive;
+        }
     }
 
     private void overpopulation() {
-        if(neighbors.living() > 3) alive = State.DEAD;
+        if(neighbors.living() > 3) {
+            nextGenerationState = State.DEAD;
+        }
     }
 
     private void underpopulation() {
-        if(neighbors.living() < 2) alive = State.DEAD;
+        if(neighbors.living() < 2) {
+            nextGenerationState = State.DEAD;
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Cell{");
+        sb.append("alive=").append(alive);
+        sb.append(", nextGenerationState=").append(nextGenerationState);
+        sb.append(", neighbors=").append(neighbors);
+        sb.append('}');
+        return sb.toString();
     }
 }
