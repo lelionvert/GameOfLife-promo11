@@ -1,6 +1,7 @@
 package fr.lacombe;
 
 class Cell {
+    //TODO: add an id, collection ou tous les elts sont uniques
     private State actualStateLife;
     private State nextStateLife;
     private Neighbors neighbors;
@@ -13,31 +14,31 @@ class Cell {
     State getState() {
         return actualStateLife;
     }
-    State willBeAlive() { return nextStateLife; }
+    State getNextState() { return nextStateLife; }
 
-    void nextGeneration() {
+    void computeNextState() {
         underpopulation();
         aliveNeighborsCondition();
         overpopulation();
     }
 
     private void aliveNeighborsCondition() {
-        if(neighbors.living() == 3) {
+        if(neighbors.livingCount() == 3) {
             nextStateLife = State.ALIVE;
         }
-        if(neighbors.living() == 2) {
+        if(neighbors.livingCount() == 2) {
             nextStateLife = actualStateLife;
         }
     }
 
     private void overpopulation() {
-        if(neighbors.living() > 3) {
+        if(neighbors.livingCount() > 3) {
             nextStateLife = State.DEAD;
         }
     }
 
     private void underpopulation() {
-        if(neighbors.living() < 2) {
+        if(neighbors.livingCount() < 2) {
             nextStateLife = State.DEAD;
         }
     }

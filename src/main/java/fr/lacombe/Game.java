@@ -13,8 +13,8 @@ public class Game {
     }
 
     public void nextGeneration() {
-        cell1.nextGeneration();
-        cell2.nextGeneration();
-        cell3.nextGeneration();
+        cell1.computeNextState();
+        cell2.computeNextState();
+        cell3.computeNextState();
      }
 }

@@ -33,20 +33,19 @@ public class CellTest {
             "ALIVE, 0, DEAD",
             "ALIVE, 1, DEAD"
     })
-    public void next_generation_dies_because_of_underpopulation(State alive, int nbNeighbours, State expected) {
+    public void next_generation_dies_because_of_underpopulation(State alive, int nbNeighboursAlive, State expected) {
         // Given
-        Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
+        Cell cell = createCellAndItsLivingNeighbors(alive, nbNeighboursAlive);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
-    private Cell createLivingCellNeighbors(State alive, int nbNeighbours) {
-
+    private Cell createCellAndItsLivingNeighbors(State alive, int nbNeighbours) {
         Cell cell = new Cell(alive);
         for (int i = 0; i < nbNeighbours; i++) {
             cell.makeNeighbors(new Cell(State.ALIVE));
@@ -62,15 +61,15 @@ public class CellTest {
             "ALIVE, 7, DEAD",
             "ALIVE, 8, DEAD",
     })
-    public void next_generation_dies_because_of_overpopulation(State alive, int nbNeighbours, State expected) {
+    public void next_generation_dies_because_of_overpopulation(State alive, int nbNeighboursAlive, State expected) {
         // Given
-        Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
+        Cell cell = createCellAndItsLivingNeighbors(alive, nbNeighboursAlive);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -80,15 +79,15 @@ public class CellTest {
             "ALIVE, 3, ALIVE"
     })
     public void next_generation_maintains_cell_alive_if_two_or_three_living_neighbors
-            (State alive, int nbNeighbours, State expected) {
+            (State alive, int nbNeighboursAlive, State expected) {
         // Given
-        Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
+        Cell cell = createCellAndItsLivingNeighbors(alive, nbNeighboursAlive);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
@@ -101,26 +100,26 @@ public class CellTest {
     public void next_generation_maintains_died_cell_because_of_underpopulation
             (State alive, int nbNeighbours, State expected) {
         // Given
-        Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
+        Cell cell = createCellAndItsLivingNeighbors(alive, nbNeighbours);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 
     @Test
     public void next_generation_give_birth_to_cell_if_three_neighbours() {
         // Given
-        Cell cell = createLivingCellNeighbors(State.DEAD, 3);
+        Cell cell = createCellAndItsLivingNeighbors(State.DEAD, 3);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(State.ALIVE);
     }
 
@@ -135,13 +134,13 @@ public class CellTest {
     public void next_generation_maintains_died_cell_because_of_overpopulation
             (State alive, int nbNeighbours, State expected) {
         // Given
-        Cell cell = createLivingCellNeighbors(alive, nbNeighbours);
+        Cell cell = createCellAndItsLivingNeighbors(alive, nbNeighbours);
 
         // When
-        cell.nextGeneration();
+        cell.computeNextState();
 
         // Then
-        State result = cell.willBeAlive();
+        State result = cell.getNextState();
         Assertions.assertThat(result).isEqualTo(expected);
     }
 

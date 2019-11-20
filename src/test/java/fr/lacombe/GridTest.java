@@ -16,8 +16,8 @@ public class GridTest {
         Game game = new Game(cell1, cell2, cell3);
         game.nextGeneration();
 
-        Assertions.assertThat(cell1.willBeAlive()).isEqualTo(State.DEAD);
-        Assertions.assertThat(cell2.willBeAlive()).isEqualTo(State.ALIVE);
-        Assertions.assertThat(cell3.willBeAlive()).isEqualTo(State.DEAD);
+        Assertions.assertThat(cell1.getNextState()).isEqualTo(State.DEAD);
+        Assertions.assertThat(cell2.getNextState()).isEqualTo(State.ALIVE);
+        Assertions.assertThat(cell3.getNextState()).isEqualTo(State.DEAD);
     }
 }
