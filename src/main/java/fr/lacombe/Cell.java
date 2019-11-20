@@ -42,7 +42,7 @@ class Cell {
         }
     }
 
-    boolean hasNeighborOf(Cell cell) {
+    boolean hasAsNeighbor(Cell cell) {
         return neighbors.contains(cell);
     }
 
