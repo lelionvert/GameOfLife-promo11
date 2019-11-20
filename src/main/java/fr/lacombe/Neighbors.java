@@ -15,12 +15,12 @@ public class Neighbors {
                 .count();
     }
 
-    void add(Cell cellRight) {
-        cells.add(cellRight);
+    void add(Cell cell) {
+        cells.add(cell);
     }
 
-    boolean contains(Cell cellRight) {
-        return cells.stream().anyMatch(cellRight::equals);
+    boolean contains(Cell cell) {
+        return cells.stream().anyMatch(cell::equals);
     }
 
     @Override
